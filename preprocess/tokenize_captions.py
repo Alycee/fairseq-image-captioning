@@ -8,12 +8,17 @@ from sacremoses import MosesTokenizer
 
 
 def load_annotations(coco_dir):
-    with open(os.path.join(coco_dir, 'annotations', f'captions_train2014.json')) as f:
-        annotations = json.load(f)['annotations']
+    if 'ms-coco' in coco_dir:
+        with open(os.path.join(coco_dir, 'annotations', f'captions_train2014.json')) as f:
+            annotations = json.load(f)['annotations']
 
-    with open(os.path.join(coco_dir, 'annotations', f'captions_val2014.json')) as f:
-        annotations.extend(json.load(f)['annotations'])
-
+        with open(os.path.join(coco_dir, 'annotations', f'captions_val2014.json')) as f:
+            annotations.extend(json.load(f)['annotations'])
+    else:
+        with open(os.path.join(coco_dir, 'annotations', f'captions_train.json')) as f:
+            annotations = json.load(f)['annotations']
+        with open(os.path.join(coco_dir, 'annotations', f'captions_val.json')) as f:
+            annotations.extend(json.load(f)['annotations'])
     return annotations
 
 

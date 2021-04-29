@@ -13,7 +13,8 @@ from PIL import Image
 
 
 def split_file(split):
-    return os.path.join('splits', f'karpathy_{split}_images.txt')
+    # return os.path.join('splits', f'karpathy_{split}_images.txt')
+    return os.path.join('splits', f'emotion-x_{split}_images.txt')
 
 
 def read_split_image_ids_and_paths(split):
