@@ -36,7 +36,7 @@ def predict(image_id_path: str,
 
     task = tasks.setup_task(model_args)
     captions_dict = task.target_dictionary
-
+    import pdb;pdb.set_trace()
     models, _model_args = checkpoint_utils.load_model_ensemble(model_args.path.split(':'), task=task)
 
     for model in models:

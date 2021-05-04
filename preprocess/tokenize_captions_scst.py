@@ -16,6 +16,7 @@ def tokenize_captions(output_dir, split, coco):
         caps = coco.imgToAnns[image_id]
         gts[image_id] = caps
 
+
     return PTBTokenizer().tokenize(gts)
 
 
@@ -30,10 +31,13 @@ def load_captions_merge(coco_dir):
             captions = json.load(f)
         with open(os.path.join(coco_dir, 'annotations', f'captions_val.json')) as f:
             captions_val = json.load(f)
-
+        with open(os.path.join(coco_dir, 'annotations', f'captions_test.json')) as f:
+            captions_test = json.load(f)
     captions['type'] = 'captions'
     captions['images'].extend(captions_val['images'])
     captions['annotations'].extend(captions_val['annotations'])
+    captions['images'].extend(captions_test['images'])
+    captions['annotations'].extend(captions_test['annotations'])
 
     return captions
 

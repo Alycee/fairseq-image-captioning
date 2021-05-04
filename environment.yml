@@ -1,4 +1,4 @@
-name: fairseq-image-captioning
+name: fairseq-ic
 channels:
   - pytorch
   - conda-forge
